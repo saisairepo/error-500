@@ -9,4 +9,6 @@ spec:
   - protocol: TCP
     port: 80         # The port exposed by the service
     targetPort: 80    # The port the container is listening on
-  type: NodePort      # Expose the service on a random port on each node
+    nodePort: 32703     # Expose the service on a random port on each node
+  selector:
+    app: 403-error
