@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: 403-error
-  labels:
-    app: 403-error
+  namespace: default
 spec:
   replicas: 2  # Number of pod replicas
   selector:
