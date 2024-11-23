@@ -1,20 +1,12 @@
-# Use an official Node.js runtime as the base image
-FROM node:18
+# Use the official Nginx image as the base image
+FROM nginx:alpine
 
-# Set the working directory
-WORKDIR /app
+# Copy custom configuration (optional)
+# Uncomment and modify if you have a custom nginx.conf file
+# COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy package.json and package-lock.json for dependency installation
-COPY package*.json ./
+# Copy static content to the default Nginx HTML directory
+COPY index.html /usr/share/nginx/html
 
-# Install dependencies
-RUN npm install
-
-# Copy the application source code
-COPY . .
-
-# Expose the application port
+# Expose port 80 to allow external access
 EXPOSE 80
-
-# Define the command to run the application
-CMD ["npm", "start"]
