@@ -4,7 +4,7 @@ metadata:
   name: 403-error
   namespace: default
 spec:
-  replicas: 2  # Number of pod replicas
+  replicas: 1  # Number of pod replicas
   selector:
     matchLabels:
       app: 403-error
@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
       - name: 403-error
-        image: ghcr.io/saisairepo/403-error:v1.1  # Replace with your own image
+        image: 403-error:latest  # Replace with your own image
         ports:
-        - containerPort: 80  # Port the container listens on
+        - containerPort: 3000  # Port the container listens on
         imagePullPolicy: Always
       imagePullSecrets:
-      - name: ghcr-registry-secret  # Add your image pull secret here
+      - name: ghcr-registry-secret 
