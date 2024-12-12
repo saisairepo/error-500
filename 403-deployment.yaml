@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: 403-error
-        image: ghcr.io/saisairepo/403-error:v1.1
+        image: ghcr.io/saisairepo/403-error:v1.2
         ports:
         - containerPort: 80
         imagePullPolicy: Always
