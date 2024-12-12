@@ -1,0 +1,26 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: saisai.local
+    http:
+      paths:
+      - path: /403-error
+        pathType: Prefix
+        backend:
+          service:
+            name: error-service
+            port:
+              number: 80
+      - path: /mu-app
+        pathType: Prefix
+        backend:
+          service:
+            name: mu-service
+            port:
+              number: 80
