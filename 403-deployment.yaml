@@ -20,4 +20,4 @@ spec:
         - containerPort: 3001
         imagePullPolicy: Always
       imagePullSecrets:
-      - name: ghcr-registry-secret
+      - name: error-secret
