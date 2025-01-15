@@ -17,7 +17,7 @@ spec:
       - name: 403-error
         image: ghcr.io/saisairepo/403-error:v2.2
         ports:
-        - containerPort: 80
+        - containerPort: 30023
         imagePullPolicy: Always
       imagePullSecrets:
       - name: error-secret
