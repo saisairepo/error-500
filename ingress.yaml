@@ -17,10 +17,3 @@ spec:
             name: error-service
             port:
               number: 80
-      - path: /mu-app
-        pathType: Prefix
-        backend:
-          service:
-            name: mu-service
-            port:
-              number: 80
