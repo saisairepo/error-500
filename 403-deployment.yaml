@@ -1,11 +1,11 @@
----
+#---------------------------------------------------------------DEPLOYMENT---------------------------------------------------------------------------------------------
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: 403-error
   namespace: app-net
 spec:
-  replicas: 1  # Number of pod replicas
+  replicas: 1
   selector:
     matchLabels:
       app: 403-error
@@ -15,36 +15,52 @@ spec:
         app: 403-error
     spec:
       containers:
-        - name: 403-error
-          image: ghcr.io/saisairepo/403-error:v2.2
-          ports:
-            - containerPort: 9001
-          imagePullPolicy: Always
+      - name: 403-error
+        image: ghcr.io/saisairepo/403-error:v2.2
+        ports:
+        - containerPort: 9001
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2"
+          limits:
+            memory: "4Gi"
+            cpu: "2"
       imagePullSecrets:
-        - name: error-secret
+      - name: error-secret
+#------------------------------------------------------------------SERVICE---------------------------------------------------------------------------------------------
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: error-service
+  namespace: app-net
 spec:
   selector:
     app: 403-error
   ports:
-    - name: http
-      port: 80
-      targetPort: 9001
+  - name: http
+    port: 80
+    targetPort: 9001
   type: ClusterIP
+#-------------------------------------------------------------------INGRESS--------------------------------------------------------------------------------------------
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
+  name: error-ingress
+  namespace: app-net
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - oscar.mlhuillier.com
+      secretName: com-tls
   rules:
-    - host: saisai.local
+    - host: oscar.mlhuillier.com
       http:
         paths:
           - path: /403-error
