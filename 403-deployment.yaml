@@ -9,7 +9,7 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 30023
+      targetPort: 9001
   type: ClusterIP
 ---
 apiVersion: apps/v1
@@ -31,7 +31,7 @@ spec:
         - name: 403-error
           image: ghcr.io/saisairepo/403-error:v2.2
           ports:
-            - containerPort: 30023
+            - containerPort: 9001
           imagePullPolicy: Always
       imagePullSecrets:
         - name: error-secret
