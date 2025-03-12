@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: 403-error
-        image: ghcr.io/saisairepo/403-error:v2.2
+        image: ghcr.io/saisairepo/403-error:v1.0
         ports:
         - containerPort: 9001
         resources:
