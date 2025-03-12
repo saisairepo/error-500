@@ -1,5 +1,5 @@
 # Step 1: Use official Nginx image from the Docker Hub
-FROM --platform=linux/amd64 nginx:alpine
+FROM nginx:alpine
 
 # Step 2: Set the working directory in the container
 WORKDIR /usr/share/nginx/html
