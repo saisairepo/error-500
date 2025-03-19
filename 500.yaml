@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 403-error
+  name: error
   namespace: app-net
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: 403-error
+      app: error-app
   template:
     metadata:
       labels:
-        app: 403-error
+        app: error-app
     spec:
       containers:
-      - name: 403-error
-        image: ghcr.io/saisairepo/403-error:v1.1
+      - name: error-cont
+        image: ghcr.io/saisairepo/error-500:v1.1
         ports:
         - containerPort: 9001
         resources:
@@ -37,7 +37,7 @@ metadata:
   namespace: app-net
 spec:
   selector:
-    app: 403-error
+    app: error-app
   ports:
   - name: http
     port: 80
@@ -63,7 +63,7 @@ spec:
     - host: oscar.mlhuillier.com
       http:
         paths:
-          - path: /403-error
+          - path: /error-500
             pathType: Prefix
             backend:
               service:
