@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: error-cont
-        image: ghcr.io/saisairepo/error-500:v1.1
+        image: ghcr.io/saisairepo/error-500:v1.2
         ports:
         - containerPort: 9001
         resources:
