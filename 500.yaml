@@ -18,7 +18,7 @@ spec:
       - name: error-cont
         image: ghcr.io/saisairepo/error-500:v1.2
         ports:
-        - containerPort: 9001
+        - containerPort: 8080
         resources:
           requests:
             memory: "4Gi"
@@ -41,7 +41,7 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: 9001
+    targetPort: 8080
   type: ClusterIP
 #-------------------------------------------------------------------INGRESS--------------------------------------------------------------------------------------------
 #---
