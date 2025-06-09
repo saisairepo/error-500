@@ -14,3 +14,5 @@ EXPOSE 9001
 RUN sed -i 's/80/9001/' /etc/nginx/conf.d/default.conf
 
 # Nginx will automatically serve the files from /usr/share/nginx/html directory
+
+# Step 6: hehe
