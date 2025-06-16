@@ -10,6 +10,15 @@
             background-color: #330000;
             font-family: "Montserrat", sans-serif;
         }
+        #clock {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+        }
         article {
             display: flex;
             justify-content: center;
@@ -44,9 +53,22 @@
             stroke-miterlimit: 10;
         }
     </style>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString();
+            const timeStr = now.toLocaleTimeString();
+            document.getElementById('clock').textContent = `${dateStr} ${timeStr}`;
+        }
+
+        setInterval(updateClock, 1000);
+        window.onload = updateClock;
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.6/vivus.min.js"></script>
 </head>
 <body>
+    <div id="clock"></div> <!-- Real-time clock display -->
+
     <article>
         <aside>
             <svg onclick="render_error.reset().play();" id="render_error" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 809 375">
