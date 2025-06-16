@@ -1,0 +1,12 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/error:1.2', '.' ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/error:1.2' ]
+
+images:
+  - 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/error:1.2'
+
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
