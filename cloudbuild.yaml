@@ -1,12 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/hiccup:latest', '.' ]
+    args: [ 'build', '-t', 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/error:latest', '.' ]
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/hiccup:latest' ]
+    args: [ 'push', 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/error:latest' ]
 
 images:
-  - 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/hiccup:latest'
+  - 'asia-southeast1-docker.pkg.dev/ml-sandbox-project/error/error:latest'
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
